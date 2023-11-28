@@ -89,7 +89,7 @@ class TupleTypingTest extends BaseTestCase
                     "properties": {
                         "data": {
                             "type": "array",
-                            "items": [{"type":"string"}],
+                            "items": {"type":"string"},
                             "additionalItems": false
                         }
                     }
