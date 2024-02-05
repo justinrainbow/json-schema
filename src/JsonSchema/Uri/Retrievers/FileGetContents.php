@@ -49,11 +49,10 @@ class FileGetContents extends AbstractRetriever
         }
 
         $this->messageBody = $response;
-        if (!empty($http_response_header)) {
-            // $http_response_header cannot be tested, because it's defined in the method's local scope
-            // See http://php.net/manual/en/reserved.variables.httpresponseheader.php for more info.
-            $this->fetchContentType($http_response_header); // @codeCoverageIgnore
-        } else {                                            // @codeCoverageIgnore
+        $headers = strpos($uri, 'http') === 0 ? get_headers($uri) : array();
+        if (!empty($headers)) {
+            $this->fetchContentType($headers);
+        } else {
             // Could be a "file://" url or something else - fake up the response
             $this->contentType = null;
         }
