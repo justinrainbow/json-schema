@@ -51,7 +51,7 @@ class FileGetContents extends AbstractRetriever
         $this->messageBody = $response;
         $headers = strpos($uri, 'http') === 0 ? get_headers($uri) : array();
         if (!empty($headers)) {
-            $this->fetchContentType($headers);
+            $this->fetchContentType(array_reverse($headers));
         } else {
             // Could be a "file://" url or something else - fake up the response
             $this->contentType = null;
