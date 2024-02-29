@@ -81,7 +81,7 @@ class TupleTypingTest extends BaseTestCase
                         }
                     }
                 }'
-            ),
+            )
         );
     }
 
